@@ -7,15 +7,18 @@ namespace LUX
 	public class MouseInput : MonoBehaviour
 	{
 		[Tooltip("The camera we will raycast from. If blank, will use Camera.main")]
-		public Camera camera;
+		public Camera targetCamera;
+
+		[Tooltip("How 'hard' the mouse hits the keys")]
+		[Range(0,1)]public float mouseVelocity;
 
 		protected Keys luxKeys;
 
 		protected void Start()
 		{
-			if (camera == null)
+			if (targetCamera == null)
 			{
-				camera = Camera.main;
+				targetCamera = Camera.main;
 			}
 
 			luxKeys = gameObject.GetComponentInChildren<Keys>();
@@ -42,7 +45,7 @@ namespace LUX
 		protected void OnClick(bool precisionClick)
 		{
 			RaycastHit hit;
-			Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+			Ray ray = targetCamera.ScreenPointToRay(Input.mousePosition);
         
 			if (Physics.Raycast(ray, out hit))
 			{
@@ -52,11 +55,11 @@ namespace LUX
 
 					if (precisionClick)
 					{
-						hitKey.OnPressed(1);
+						hitKey.OnPressed(mouseVelocity);
 					}
 					else
 					{
-						luxKeys.OnClumsyKeyPressed(hitKey, 1);
+						luxKeys.OnClumsyKeyPressed(hitKey, mouseVelocity);
 					}
 					
 				}

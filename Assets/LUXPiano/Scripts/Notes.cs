@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace LUX
 {
+    // http://computermusicresource.com/midikeys.html
     public enum Note : int
     {
         C = 0,

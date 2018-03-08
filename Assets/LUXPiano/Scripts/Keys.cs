@@ -31,9 +31,12 @@ namespace LUX
         }
 
         protected Dictionary<int, Key> keys = new Dictionary<int, Key>();
+        protected Playback playback;
 
         protected void OnEnable()
         {
+            playback = GetComponentInParent<Playback>();
+            
             if (spawnKeysOnEnable)
             {
                 CreateKeys();
@@ -96,7 +99,7 @@ namespace LUX
             
             Key key = Instantiate<Key>(prefab, position, rotation);
             key.transform.SetParent(transform, true);
-            key.SetNote(note);
+            key.SetupKey(note, playback);
             keys.Add(note, key);
             return key;
         }

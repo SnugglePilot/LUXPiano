@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19de7d6a09fc55b4993f9cddccc672a7, type: 3}
+  m_Name: MidiAsset_137
+  m_EditorClassIdentifier: 
+  hivel: 110
+  lovel: 64
+  lokey: 58
+  hikey: 58
+  pitch_keycenter: 58
+  key: -1
+  sample: C-Piano_mf\c-piano-mf__49.wav
+  ampeg_release: 0.8
+  amp_veltrack: 80
+  audioClip: {fileID: 8300000, guid: 4721316e04f589a499370ffe40197c9d, type: 3}

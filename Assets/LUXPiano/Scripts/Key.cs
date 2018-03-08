@@ -17,12 +17,14 @@ namespace LUX
 
 		// Store the rotation vectors locally:
 		protected Vector3 staticRotation;
+		protected Playback playback;
 
 		public int note { get; protected set; }
 
-		public void SetNote(int to)
+		public void SetupKey(int noteNumber, Playback playbackReference)
 		{
-			note = to;
+			note = noteNumber;
+			playback = playbackReference;
 			gameObject.name = "LUX.Key (" + ((Note) Notes.GetNoteFromOctive(note)).ToString() + ")";
 			
 			// Set the rotation here because this is after instantiation/setup. Keypress could still happen this tick.
@@ -41,6 +43,8 @@ namespace LUX
 
 			isPressed = true;
 			transform.localEulerAngles = staticRotation + pressTraversalDegrees;
+			
+			playback.PlayNote(note, velocity);
 		}
 
 		public void OnReleased()
