@@ -126,5 +126,22 @@ namespace LUX
         {
             key.OnReleased();
         }
+
+        public void OnClumsyKeyPressed(Key key, float velocity)
+        {
+            // This function tries to make a "nice" chord for you
+            int keyNote = key.note;
+            OnKeyPressed(key, velocity);
+            OnKeyPressed(keyNote + 4, velocity);
+            OnKeyPressed(keyNote + 4 + 3, velocity);
+        }
+
+        public void ReleaseAll()
+        {
+            foreach (KeyValuePair<int, Key> entry in keys)
+            {
+                entry.Value.OnReleased();
+            }
+        }
     }
 }
